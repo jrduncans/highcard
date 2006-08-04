@@ -13,9 +13,7 @@
 
 require "card"
 
-class Deck
-	attr_reader :cards
-	
+class Deck	
 	def initialize
 		@cards = []
 		@drawnCards = []
