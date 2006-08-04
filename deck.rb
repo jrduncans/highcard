@@ -17,11 +17,11 @@ class Deck
 	def initialize
 		@cards = []
 		@drawnCards = []
-		@index = 0
 		Card.ranks.each { |rank| Card.suits.each { |suit| @cards.push(Card.new(rank, suit)) } }
 	end
 	
-	def draw	
+	def draw
+		@index = rand(@cards.size)
 		card = @cards[@index]
 		
 		if @drawnCards.include? card
@@ -31,7 +31,7 @@ class Deck
 			result = card
 		end
 		
-		@index += 1 unless @index >= (Card.ranks.length - 1)
+		@index += 1 unless @index >= (Card.ranks.size - 1)
 		
 		return result
 	end
