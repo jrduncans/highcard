@@ -37,6 +37,10 @@ class Card
 		"#{@rank} of #{@suit}"
 	end
   
+	def == (other)
+		@rank == other.rank and @suit == other.suit
+	end
+  
 	def <=> (other)
 		@@ranks.index(@rank) <=> @@ranks.index(other.rank)
 	end
