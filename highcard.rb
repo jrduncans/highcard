@@ -23,8 +23,8 @@ def printInstructions
 end
 
 deck = Deck.new
-quit = false
-until(quit)
+
+loop do
 	deck.reset
 	printInstructions
 	
@@ -35,8 +35,8 @@ until(quit)
 			card1 = deck.draw
 			card2 = deck.draw
 			
-			puts "You drew #{card1}"
-			puts "I drew #{card2}"
+			puts "You drew the #{card1}."
+			puts "Dealer drew the #{card2}."
 			
 			comparison = card1 <=> card2
 		
@@ -46,9 +46,9 @@ until(quit)
 				puts "It's a tie."
 			else
 				puts "You win!"
-			end			
+			end
 		when /2/
-			quit = true
+			break
 		else
 			puts 'Unknown option.  Please select again.'
 	end
