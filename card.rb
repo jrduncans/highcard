@@ -12,6 +12,8 @@
 # limitations under the License.
 
 class Card
+	include Comparable
+	
 	attr_reader :rank, :suit
 	attr_writer :rank, :suit
 	
@@ -33,10 +35,6 @@ class Card
   
 	def to_s
 		"#{@rank} of #{@suit}"
-	end
-  
-	def == (other)
-		@rank == other.rank and @suit == other.suit
 	end
   
 	def <=> (other)
