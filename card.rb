@@ -16,7 +16,7 @@ class Card
 	attr_writer :rank, :suit
 	
 	@@ranks = ['Ace'] + (2..10).to_a + ['Jack', 'Queen', 'King']
-	@@suits = %w(Clubs, Spades, Hearts, Diamonds)
+	@@suits = %w(Clubs Spades Hearts Diamonds)
 	
 	def Card.ranks
 		@@ranks
