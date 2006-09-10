@@ -22,6 +22,8 @@ def printInstructions
 	puts 'Enter the number of the option:'
 end
 
+$stdout.sync = true
+
 deck = Deck.new
 
 loop do
