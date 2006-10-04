@@ -21,8 +21,8 @@ class Deck
 	end
 	
 	def draw
-		@index = rand(@cards.size)
-		card = @cards[@index]
+		index = rand(@cards.size)
+		card = @cards[index]
 		
 		if @drawnCards.include? card
 			result = draw
@@ -31,13 +31,10 @@ class Deck
 			result = card
 		end
 		
-		@index += 1 unless @index >= (Card.ranks.size - 1)
-		
 		return result
 	end
 	
 	def reset
 		@drawnCards = []
-		@index = 0
 	end
 end
