@@ -37,6 +37,7 @@ loop do
 			card1 = deck.draw
 			card2 = deck.draw
 			
+			puts ""
 			puts "You drew the #{card1}."
 			puts "Dealer drew the #{card2}."
 			
