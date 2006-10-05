@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<title>High Card</title>
+		
+		<script type="text/javascript" src="card.js"></script>		
+		<script type="text/javascript" src="deck.js"></script>
+		<script type="text/javascript" src="highcard.js"></script>
+
+		<script type="text/javascript">
+			function play() {				
+				var result = HighCard.play();
+				
+				var resultsElement = document.createElement("div");
+				resultsElement.id = "results";
+				
+				resultsElement.appendChild(document.createTextNode("You drew the " + result["yourCard"] + "."));
+				resultsElement.appendChild(document.createElement("br"));
+				resultsElement.appendChild(document.createTextNode("Dealer drew the " + result["dealerCard"] + "."));
+				resultsElement.appendChild(document.createElement("br"));
+				resultsElement.appendChild(document.createTextNode(result["result"]));
+				resultsElement.appendChild(document.createElement("br"));
+				resultsElement.appendChild(document.createElement("br"));
+				
+				var instructions = document.getElementById("instructions");
+				instructions.replaceChild(resultsElement, instructions.firstChild);
+			}
+		</script>
+	</head>
+	
+	<body>
+		<h1>High Card</h1>
+		
+		<div id="instructions">
+			<div id="results" />
+			
+			Press "Play" to draw a card.
+		</div>
+		
+		<form>
+			<button type="button" onclick="play();">Play</button>
+		</form>
+	</body>
+</html>
