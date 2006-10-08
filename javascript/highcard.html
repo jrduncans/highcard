@@ -7,22 +7,35 @@
 		<script type="text/javascript" src="highcard.js"></script>
 
 		<script type="text/javascript">
-			function play() {				
+			var yourCardElement;
+			var dealerCardElement;
+			var resultElement;
+			var resultsElement;
+		
+			function play() {
+				// Lazily initialize each of the elements.
+				if(!yourCardElement)
+					yourCardElement = document.getElementById("yourCard");
+					
+				if(!dealerCardElement)
+					dealerCardElement = document.getElementById("dealerCard");
+					
+				if(!resultElement)
+					resultElement = document.getElementById("result");
+					
+				if(!resultsElement)
+					resultsElement = document.getElementById("results");
+			
+				// Play and get the result
 				var result = HighCard.play();
 				
-				var resultsElement = document.createElement("div");
-				resultsElement.id = "results";
+				// Set the text of each of the elements to the corresponding result information
+				yourCardElement.replaceChild(document.createTextNode(result["yourCard"]), yourCardElement.firstChild);
+				dealerCardElement.replaceChild(document.createTextNode(result["dealerCard"]), dealerCardElement.firstChild);
+				resultElement.replaceChild(document.createTextNode(result["result"]), resultElement.firstChild);
 				
-				resultsElement.appendChild(document.createTextNode("You drew the " + result["yourCard"] + "."));
-				resultsElement.appendChild(document.createElement("br"));
-				resultsElement.appendChild(document.createTextNode("Dealer drew the " + result["dealerCard"] + "."));
-				resultsElement.appendChild(document.createElement("br"));
-				resultsElement.appendChild(document.createTextNode(result["result"]));
-				resultsElement.appendChild(document.createElement("br"));
-				resultsElement.appendChild(document.createElement("br"));
-				
-				var instructions = document.getElementById("instructions");
-				instructions.replaceChild(resultsElement, instructions.firstChild);
+				// Show the results element
+				resultsElement.style.display = "";
 			}
 		</script>
 	</head>
@@ -30,8 +43,16 @@
 	<body>
 		<h1>High Card</h1>
 		
-		<div id="instructions">
-			<div id="results" />
+		<div>
+			<div id="results" style="display:none;">
+				You drew the <span id="yourCard" />.
+				<br />
+				Dealer drew the <span id="dealerCard" />.
+				<br />
+				<span id="result" />
+				<br />
+				<br />
+			</div>
 			
 			Press "Play" to draw a card.
 		</div>
