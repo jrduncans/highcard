@@ -13,6 +13,16 @@
  * limitations under the License.
  */
  
+if(typeof Array.prototype.indexOf === 'undefined') {
+	Array.prototype.indexOf = function(n) {
+		for(var i=0;i<this.length;i++)
+			if(this[i]===n)
+				return i;
+
+		return -1;
+	}
+}
+
 function Deck() {
 	this.cards = [];
 	this.drawnCards = [];
