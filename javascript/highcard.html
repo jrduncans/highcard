@@ -7,21 +7,21 @@
 		<script type="text/javascript" src="highcard.js"></script>
 
 		<script type="text/javascript">
-			var yourCardElement;
-			var dealerCardElement;
-			var resultElement;
+			var yourCardTextNode;
+			var dealerCardTextNode;
+			var resultTextNode;
 			var resultsElement;
 		
 			function play() {
-				// Lazily initialize each of the elements.
-				if(!yourCardElement)
-					yourCardElement = document.getElementById("yourCard");
+				// Lazily initialize each of the elements
+				if(!yourCardTextNode)
+					yourCardTextNode = document.getElementById("yourCard").firstChild;
 					
-				if(!dealerCardElement)
-					dealerCardElement = document.getElementById("dealerCard");
+				if(!dealerCardTextNode)
+					dealerCardTextNode = document.getElementById("dealerCard").firstChild;
 					
-				if(!resultElement)
-					resultElement = document.getElementById("result");
+				if(!resultTextNode)
+					resultTextNode = document.getElementById("result").firstChild;
 					
 				if(!resultsElement)
 					resultsElement = document.getElementById("results");
@@ -30,10 +30,10 @@
 				var result = HighCard.play();
 				
 				// Set the text of each of the elements to the corresponding result information
-				yourCardElement.replaceChild(document.createTextNode(result["yourCard"]), yourCardElement.firstChild);
-				dealerCardElement.replaceChild(document.createTextNode(result["dealerCard"]), dealerCardElement.firstChild);
-				resultElement.replaceChild(document.createTextNode(result["result"]), resultElement.firstChild);
-				
+				yourCardTextNode.nodeValue = result.yourCard;
+				dealerCardTextNode.nodeValue = result.dealerCard;
+				resultTextNode.nodeValue = result.result;
+			
 				// Show the results element
 				resultsElement.style.display = "";
 			}
