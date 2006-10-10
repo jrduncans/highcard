@@ -23,17 +23,17 @@ HighCard.play = function play() {
 	card1 = deck.draw();
 	card2 = deck.draw();
 	
-	result["yourCard"] = card1;
-	result["dealerCard"] = card2;
+	result.yourCard = card1;
+	result.dealerCard = card2;
 	
 	var comparison = card1.compareTo(card2);
 
 	if(comparison < 0)
-		result["result"] = "Sorry, you lose.";
-	else if(comparison == 0)
-		result["result"] = "It's a tie.";
+		result.result = "Sorry, you lose.";
+	else if(comparison > 0)
+		result.result = "You win!";
 	else
-		result["result"] = "You win!";
+		result.result = "You win!";
 		
 	return result;
 }

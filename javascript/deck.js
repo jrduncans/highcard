@@ -13,10 +13,10 @@
  * limitations under the License.
  */
  
-if(typeof Array.prototype.indexOf === 'undefined') {
+if(!Array.prototype.indexOf) {
 	Array.prototype.indexOf = function(n) {
-		for(var i=0;i<this.length;i++)
-			if(this[i]===n)
+		for(var i = 0; i < this.length; i++)
+			if(this[i] === n)
 				return i;
 
 		return -1;
@@ -38,12 +38,12 @@ Deck.prototype.draw = function() {
 	var index = Math.floor(Math.random() * this.cards.length);
 	card = this.cards[index];
 	
-	if(this.drawnCards.indexOf(card) != -1)
-		result = this.draw();
-	else {
+	if(this.drawnCards.indexOf(card) == -1) {	
 		this.drawnCards.push(card);
 		result = card;
 	}
+	else
+		result = this.draw();
 	
 	return result;
 }

@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-Card.ranks = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King'];
-Card.suits = ['Clubs', 'Spades', 'Hearts', 'Diamonds'];
+Card.ranks = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
+Card.suits = ["Clubs", "Spades", "Hearts", "Diamonds"];
 
 function Card(rank, suit) {
 	this.rank = rank;
@@ -33,11 +33,10 @@ Card.prototype.compareTo = function(other) {
 	var thisIndex = Card.ranks.indexOf(this.rank);
 	var otherIndex = Card.ranks.indexOf(other.rank);
 
-	if(thisIndex < otherIndex) {
+	if(thisIndex < otherIndex)
 		return -1;
-	} else if(thisIndex > otherIndex) {
+	else if(thisIndex > otherIndex)
 		return 1;
-	} else {
+	else
 		return 0;
-	}
 }
