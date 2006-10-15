@@ -16,45 +16,57 @@
 require "deck"
 require "card"
 
+class HighCard
+	def HighCard.play
+		deck = Deck.new
+
+		card1 = deck.draw
+		card2 = deck.draw
+
+		result = {:yourCard=>card1, :dealerCard=>card2}
+
+		comparison = card1 <=> card2
+
+		if(comparison < 0)
+			result[:result] = "Sorry, you lose."
+		elsif(comparison == 0)
+			result[:result] = "It's a tie."
+		else
+			result[:result] = "You win!"
+		end
+
+		return result	
+	end
+end
+
 def printInstructions
 	puts '1: Play'
 	puts '2: Quit'
 	puts 'Enter the number of the option:'
 end
 
-$stdout.sync = true
+if $0 == __FILE__
+	$stdout.sync = true
 
-deck = Deck.new
-
-loop do
-	deck.reset
-	printInstructions
-	
-	line = gets
-	
-	case line
-		when /1/
-			card1 = deck.draw
-			card2 = deck.draw
-			
-			puts ""
-			puts "You drew the #{card1}."
-			puts "Dealer drew the #{card2}."
-			
-			comparison = card1 <=> card2
+	loop do
+		printInstructions
 		
-			if(comparison < 0)
-				puts "Sorry, you lose."
-			elsif(comparison == 0)
-				puts "It's a tie."
+		line = gets
+		
+		case line
+			when /1/
+				result = HighCard.play
+				
+				puts ""
+				puts "You drew the #{result[:yourCard]}."
+				puts "Dealer drew the #{result[:dealerCard]}."
+				puts result[:result]
+			when /2/
+				break
 			else
-				puts "You win!"
-			end
-		when /2/
-			break
-		else
-			puts 'Unknown option.  Please select again.'
+				puts 'Unknown option.  Please select again.'
+		end
+		
+		puts
 	end
-	
-	puts
 end
