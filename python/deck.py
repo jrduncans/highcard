@@ -17,11 +17,8 @@ from random import choice
 
 class Deck:
 	def __init__(self):
-		self.cards = []
+		self.cards = [Card(rank, suit) for rank in Card.ranks for suit in Card.suits]
 		self.drawnCards = []
-		for rank in Card.ranks:
-			for suit in Card.suits:
-				self.cards.append(Card(rank, suit))
 	
 	def draw(self):
 		card = choice(self.cards)
