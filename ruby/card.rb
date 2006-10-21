@@ -36,6 +36,14 @@ class Card
 	def to_s
 		"#{@rank} of #{@suit}"
 	end
+
+	def hash
+		@rank.hash + @suit.hash
+	end
+
+	def eql? (other)
+		self == other
+	end
   
 	def == (other)
 		@rank == other.rank and @suit == other.suit
