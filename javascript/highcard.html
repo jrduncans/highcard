@@ -17,11 +17,34 @@
 	<head>
 		<title>High Card</title>
 		
-		<script type="text/javascript" src="card.js"></script>		
-		<script type="text/javascript" src="deck.js"></script>
-		<script type="text/javascript" src="highcard.js"></script>
+		<script type="text/javascript" src="cards.js"></script>
 
 		<script type="text/javascript">
+			function HighCard() {};
+			
+			HighCard.play = function play() {
+				var result = {};
+			
+				var deck = new Deck();
+					
+				card1 = deck.draw();
+				card2 = deck.draw();
+				
+				result.yourCard = card1;
+				result.dealerCard = card2;
+				
+				var comparison = card1.compareTo(card2);
+			
+				if(comparison < 0)
+					result.result = "Sorry, you lose.";
+				else if(comparison > 0)
+					result.result = "You win!";
+				else
+					result.result = "You win!";
+					
+				return result;
+			}
+
 			var yourCardTextNode;
 			var dealerCardTextNode;
 			var resultTextNode;
