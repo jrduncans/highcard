@@ -51,17 +51,17 @@ if $0 == __FILE__
 	loop do
 		printInstructions
 		
-		line = gets
+		line = gets.strip
 		
 		case line
-			when /1/
+			when "1"
 				result = HighCard.play
 				
 				puts ""
 				puts "You drew the #{result[:yourCard]}."
 				puts "Dealer drew the #{result[:dealerCard]}."
 				puts result[:result]
-			when /2/
+			when "2"
 				break
 			else
 				puts 'Unknown option.  Please select again.'
