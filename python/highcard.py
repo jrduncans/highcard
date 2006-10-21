@@ -13,8 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from card import Card
-from deck import Deck
+from cards import Card, Deck
 
 class HighCard:
 	@staticmethod

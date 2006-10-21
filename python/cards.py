@@ -1,4 +1,3 @@
- 
 # Copyright 2006 Stephen Duncan Jr
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +11,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from card import Card
+class Card:	
+	ranks = ['Ace'] + range(2,11) + ['Jack', 'Queen', 'King']
+	suits = ['Clubs', 'Spades', 'Hearts', 'Diamonds']
+
+	def __init__(self, rank, suit):
+		self.rank = rank
+		self.suit = suit
+  
+	def __str__(self):
+		return "%s of %s" % (self.rank, self.suit)
+  
+	def __eq__(self, other):
+		return self.rank == other.rank and self.suit == other.suit
+		
+	def __ne__(self, other):
+		return not self.__eq__(other)
+  
+	def __cmp__(self, other):
+		return cmp(Card.ranks.index(self.rank), Card.ranks.index(other.rank))
+	
 from random import choice
 
 class Deck:
