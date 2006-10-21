@@ -13,12 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "deck"
-require "card"
+require "cards"
 
 class HighCard
 	def HighCard.play
-		deck = Deck.new
+		deck = Cards::Deck.new
 
 		card1 = deck.draw
 		card2 = deck.draw
@@ -55,7 +54,7 @@ if $0 == __FILE__
 		
 		case line
 			when "1"
-				result = HighCard.play
+				result = HighCard::play
 				
 				puts ""
 				puts "You drew the #{result[:yourCard]}."
