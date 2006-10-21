@@ -16,7 +16,6 @@ module Cards
 		include Comparable
 		
 		attr_reader :rank, :suit
-		attr_writer :rank, :suit
 		
 		@@ranks = ['Ace'] + (2..10).to_a + ['Jack', 'Queen', 'King']
 		@@suits = %w(Clubs Spades Hearts Diamonds)
