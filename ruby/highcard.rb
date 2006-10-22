@@ -19,19 +19,17 @@ class HighCard
 	def HighCard.play
 		deck = Cards::Deck.new
 
-		card1 = deck.draw
-		card2 = deck.draw
+		yourCard = deck.draw
+		dealerCard = deck.draw
 
-		result = {:yourCard=>card1, :dealerCard=>card2}
+		result = {:yourCard => yourCard, :dealerCard => dealerCard}
 
-		comparison = card1 <=> card2
-
-		if(comparison < 0)
+		if yourCard < dealerCard
 			result[:result] = "Sorry, you lose."
-		elsif(comparison == 0)
-			result[:result] = "It's a tie."
-		else
+		elsif yourCard > dealerCard
 			result[:result] = "You win!"
+		else
+			result[:result] = "It's a tie."
 		end
 
 		return result	
