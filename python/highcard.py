@@ -20,19 +20,17 @@ class HighCard:
 	def play():
 		deck = Deck()
 
-		card1 = deck.draw()
-		card2 = deck.draw()
+		yourCard = deck.draw()
+		dealerCard = deck.draw()
 
-		result = {"yourCard":card1, "dealerCard":card2}
+		result = {"yourCard":yourCard, "dealerCard":dealerCard}
 
-		comparison = cmp(card1, card2)
-
-		if comparison < 0:
+		if yourCard < dealerCard:
 			result["result"] = "Sorry, you lose."
-		elif comparison == 0:
-			result["resut"] = "It's a tie."
-		else:
+		elif yourCard > dealerCard:
 			result["result"] = "You win!"
+		else:
+			result["result"] = "It's a tie."
 
 		return result
 
