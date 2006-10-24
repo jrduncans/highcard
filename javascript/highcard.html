@@ -30,36 +30,36 @@
 				card1 = deck.draw();
 				card2 = deck.draw();
 				
-				result.yourCard = card1;
+				result.playerCard = card1;
 				result.dealerCard = card2;
 				
 				var comparison = card1.compareTo(card2);
 			
 				if(comparison < 0)
-					result.result = "Sorry, you lose.";
+					result.message = "Sorry, you lose.";
 				else if(comparison > 0)
-					result.result = "You win!";
+					result.message = "You win!";
 				else
-					result.result = "You win!";
+					result.message = "You win!";
 					
 				return result;
 			}
 
-			var yourCardTextNode;
+			var playerCardTextNode;
 			var dealerCardTextNode;
 			var resultTextNode;
 			var resultsElement;
 		
 			function play() {
 				// Lazily initialize each of the elements
-				if(!yourCardTextNode)
-					yourCardTextNode = document.getElementById("yourCard").firstChild;
+				if(!playerCardTextNode)
+					playerCardTextNode = document.getElementById("playerCard").firstChild;
 					
 				if(!dealerCardTextNode)
 					dealerCardTextNode = document.getElementById("dealerCard").firstChild;
 					
 				if(!resultTextNode)
-					resultTextNode = document.getElementById("result").firstChild;
+					resultTextNode = document.getElementById("message").firstChild;
 					
 				if(!resultsElement)
 					resultsElement = document.getElementById("results");
@@ -68,9 +68,9 @@
 				var result = HighCard.play();
 				
 				// Set the text of each of the elements to the corresponding result information
-				yourCardTextNode.nodeValue = result.yourCard;
+				playerCardTextNode.nodeValue = result.playerCard;
 				dealerCardTextNode.nodeValue = result.dealerCard;
-				resultTextNode.nodeValue = result.result;
+				resultTextNode.nodeValue = result.message;
 			
 				// Show the results element
 				resultsElement.style.display = "";
@@ -83,11 +83,11 @@
 		
 		<div>
 			<div id="results" style="display:none;">
-				You drew the <span id="yourCard" />.
+				You drew the <span id="playerCard" />.
 				<br />
 				Dealer drew the <span id="dealerCard" />.
 				<br />
-				<span id="result" />
+				<span id="message" />
 				<br />
 				<br />
 			</div>

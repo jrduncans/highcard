@@ -15,22 +15,27 @@
 
 from cards import Card, Deck
 
+class Result:
+	pass
+
 class HighCard:
 	@staticmethod
 	def play():
 		deck = Deck()
 
-		yourCard = deck.draw()
+		playerCard = deck.draw()
 		dealerCard = deck.draw()
 
-		result = {"yourCard":yourCard, "dealerCard":dealerCard}
+		result = Result()
+		result.playerCard = playerCard
+		result.dealerCard = dealerCard
 
-		if yourCard < dealerCard:
-			result["result"] = "Sorry, you lose."
-		elif yourCard > dealerCard:
-			result["result"] = "You win!"
+		if playerCard < dealerCard:
+			result.message = "Sorry, you lose."
+		elif playerCard > dealerCard:
+			result.message = "You win!"
 		else:
-			result["result"] = "It's a tie."
+			result.message = "It's a tie."
 
 		return result
 
@@ -49,9 +54,9 @@ if __name__ == "__main__":
 			result = HighCard.play()
 				
 			print ""
-			print "You drew the " + str(result["yourCard"]) + "."
-			print "Dealer drew the " + str(result["dealerCard"])+ "."
-			print result["result"]
+			print "You drew the " + str(result.playerCard) + "."
+			print "Dealer drew the " + str(result.dealerCard)+ "."
+			print result.message
 		elif line == "2":
 			break
 		else:

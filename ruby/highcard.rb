@@ -13,26 +13,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "cards"
+require 'cards'
+
+Result = Struct.new('Result', :playerCard, :dealerCard, :message)
 
 class HighCard
 	def HighCard.play
 		deck = Cards::Deck.new
 
-		yourCard = deck.draw
+		playerCard = deck.draw
 		dealerCard = deck.draw
 
-		result = {:yourCard => yourCard, :dealerCard => dealerCard}
+		result = Result.new
+		result.playerCard = playerCard
+		result.dealerCard = dealerCard
 
-		if yourCard < dealerCard
-			result[:result] = "Sorry, you lose."
-		elsif yourCard > dealerCard
-			result[:result] = "You win!"
+		if playerCard < dealerCard
+			result.message = "Sorry, you lose."
+		elsif playerCard > dealerCard
+			result.message = "You win!"
 		else
-			result[:result] = "It's a tie."
+			result.message = "It's a tie."
 		end
 
-		return result	
+		return result
 	end
 end
 
@@ -55,9 +59,9 @@ if $0 == __FILE__
 				result = HighCard::play
 				
 				puts ""
-				puts "You drew the #{result[:yourCard]}."
-				puts "Dealer drew the #{result[:dealerCard]}."
-				puts result[:result]
+				puts "You drew the #{result.playerCard}."
+				puts "Dealer drew the #{result.dealerCard}."
+				puts result.message
 			when "2"
 				break
 			else
