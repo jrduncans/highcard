@@ -11,7 +11,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# This module provides basic playing cards.  It provides a Card and Deck class.
+# Can be used to implement a card game.
+#
+# Author::	Stephen Duncan Jr (mailto:jrduncans@stephenducanjr.com)
+# Copyright::	Copyright 2006 Stephen Duncan Jr
+# License::	Apache License, Version 2.0
 module Cards
+	# This class represents a playing card, and also provides class methods 
+	# to get the lists of ranks and suits.  Cards can be compared using their 
+	# rank, but equality is based on rand and suit both being equal.
 	class Card
 		include Comparable
 		
@@ -20,14 +29,19 @@ module Cards
 		@@ranks = ['Ace'] + (2..10).to_a + ['Jack', 'Queen', 'King']
 		@@suits = %w(Clubs Spades Hearts Diamonds)
 		
+		# The available ranks for playing cards, in order from lowest
+		# to highest ('Ace' through 'King').  Numerical ranks are 
+		# integers, while non-numerical ranks are strings.
 		def Card.ranks
 			@@ranks
 		end
-		
+
+		# The available suits for playing cards, in no particular order.
 		def Card.suits
 			@@suits
 		end
 	
+		# Creates a card with the given rank and suit.
 		def initialize(rank, suit)
 			@rank = rank
 			@suit = suit
@@ -54,13 +68,17 @@ module Cards
 		end
 	end
 
-	class Deck	
+	# This class represents a standard 52-card deck of cards.  It keeps track 
+	# of the cards that have been drawn.
+	class Deck
+		# Creates a new deck with no cards drawn.
 		def initialize
 			@cards = []
 			@drawnCards = []
 			Card.ranks.each { |rank| Card.suits.each { |suit| @cards.push(Card.new(rank, suit)) } }
 		end
 		
+		# Draws a random card.
 		def draw
 			index = rand(@cards.size)
 			card = @cards[index]
@@ -75,6 +93,7 @@ module Cards
 			return result
 		end
 		
+		# Puts all drawn cards back into the deck.
 		def reset
 			@drawnCards = []
 		end
