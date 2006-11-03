@@ -75,7 +75,7 @@ module Cards
 		def initialize
 			@cards = []
 			@drawnCards = []
-			Card.ranks.each { |rank| Card.suits.each { |suit| @cards.push(Card.new(rank, suit)) } }
+			Card.ranks.each{|rank| Card.suits.each{|suit| @cards << Card.new(rank, suit)}}
 		end
 		
 		# Draws a random card.
