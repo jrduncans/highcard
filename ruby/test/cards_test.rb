@@ -15,8 +15,9 @@
 
 require 'test/unit'
 require 'cards'
+require 'set'
 
-class CardsTest < Test::Unit::TestCase
+class CardTest < Test::Unit::TestCase
 	def setup
 		@ace_of_clubs = Cards::Card.new('Ace', 'Clubs')
 		@ace_of_spades = Cards::Card.new('Ace', 'Spades')
@@ -41,5 +42,32 @@ class CardsTest < Test::Unit::TestCase
 
 	def test_tostring
 		assert_match(/\bace\b.+\bclubs\b/i, @ace_of_clubs.to_s)
+	end
+end
+
+class DeckTest < Test::Unit::TestCase
+	def setup
+		@deck = Cards::Deck.new
+		@set = Set.new
+	end
+
+	def test_draw
+		52.times do
+			@set << @deck.draw
+		end
+
+		assert(@set.size == 52, '52 different cards not drawn.')
+	end
+
+	def test_reset
+		52.times do
+			@set << @deck.draw
+		end
+
+		@deck.reset
+
+		@set << @deck.draw
+
+		assert(@set.size == 52, 'Deck not reset correctly.')
 	end
 end
