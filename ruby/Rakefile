@@ -1,5 +1,14 @@
 require 'hoe'
+require 'spec/rake/spectask'
 
 Hoe.new("high_card", '1.0.0') do |p|
 	# add other details here
+end
+
+desc "Run specification"
+Spec::Rake::SpecTask.new
+
+desc "Show full specification"
+Spec::Rake::SpecTask.new('fullspec') do |t|
+  t.spec_opts = ['--format', 'specdoc']
 end
