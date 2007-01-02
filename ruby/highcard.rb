@@ -46,7 +46,7 @@ def printInstructions
 	puts 'Enter the number of the option:'
 end
 
-if $0 == __FILE__
+if $PROGRAM_NAME == __FILE__
 	$stdout.sync = true
 
 	loop do
