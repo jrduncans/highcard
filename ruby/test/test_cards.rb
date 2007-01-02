@@ -60,14 +60,13 @@ class DeckTest < Test::Unit::TestCase
 	end
 
 	def test_reset
-		52.times do
-			@set << @deck.draw
-		end
+		52.times { @deck.draw }
 
 		@deck.reset
 
-		@set << @deck.draw
+		cards = []
+		52.times { cards << @deck.draw }
 
-		assert(@set.size == 52, 'Deck not reset correctly.')
+		assert(cards.size == 52, 'Deck not reset correctly.')
 	end
 end
