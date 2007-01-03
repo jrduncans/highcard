@@ -84,13 +84,11 @@ module Cards
 			card = @cards[index]
 			
 			if @drawnCards.include? card
-				result = draw
+				draw
 			else
 				@drawnCards.push(card)
-				result = card
+				return card
 			end
-			
-			return result
 		end
 		
 		# Puts all drawn cards back into the deck.
