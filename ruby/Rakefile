@@ -10,5 +10,5 @@ Spec::Rake::SpecTask.new
 
 desc "Show full specification"
 Spec::Rake::SpecTask.new('fullspec') do |t|
-  t.spec_opts = ['--format', 'specdoc']
+	t.spec_opts = ['--format', 'specdoc']
 end
