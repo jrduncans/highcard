@@ -56,7 +56,7 @@ if $PROGRAM_NAME == __FILE__
 		
 		case line
 			when "1"
-				result = HighCard::play
+				result = HighCard.play
 				
 				puts ""
 				puts "You drew the #{result.playerCard}."
