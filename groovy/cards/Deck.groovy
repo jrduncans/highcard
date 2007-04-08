@@ -16,7 +16,7 @@
 package cards
 
 class Deck {
-	def cards
+	def private cards
 	def private drawnCards
 	
 	Deck() {
@@ -30,13 +30,13 @@ class Deck {
 		}
 	}
 	
-	Card draw() {
+	def draw() {
 		def result
 		
 		def index = Math.floor(Math.random() * this.cards.size()).toInteger()
 		def card = cards.get(index)
 		
-		if(!drawnCards.any {drawnCard -> drawnCard.sameAs(card)}) {
+		if(!drawnCards.any {drawnCard -> drawnCard.equals(card)}) {
 			drawnCards.add(card)
 			result = card
 		} else
@@ -45,7 +45,7 @@ class Deck {
 		return result
 	}
 	
-	void reset() {
+	def reset() {
 		drawnCards = []
 	}
 }

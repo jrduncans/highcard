@@ -18,14 +18,8 @@ package highcard
 import cards.Deck
 import cards.Card
 
-class Result {
-	def playerCard
-	def dealerCard
-	def message
-}
-
 class HighCard {
-	static Result play() {
+	static def play() {
 		def deck = new Deck()
 		
 		def playerCard = deck.draw()
@@ -45,13 +39,13 @@ class HighCard {
 		return result
 	}
 	
-	static void printInstructions() {
+	static def printInstructions() {
 		println("1: Play");
 		println("2: Quit");
 		println("Enter the number of the option:");
 	}
 	
-	static void main(args) {		
+	static def main(args) {		
 		while(true) {
 			printInstructions();
 			
@@ -61,7 +55,7 @@ class HighCard {
 			
 			switch(line) {
 				case "1" :
-					Result result = HighCard.play();
+					def result = HighCard.play();
 					
 					println("");
 					println("You drew the ${result.playerCard}.");
@@ -79,4 +73,10 @@ class HighCard {
 			println();
 		}
 	}
+}
+
+class Result {
+	def playerCard
+	def dealerCard
+	def message
 }

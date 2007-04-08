@@ -31,7 +31,7 @@ class Card implements Comparable {
 		"${rank} of ${suit}"
 	}
 	
-	boolean sameAs(other) {
+	boolean equals(other) {
 		this.rank == other.rank && this.suit == other.suit
 	}
 	
