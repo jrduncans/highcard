@@ -25,7 +25,7 @@ class HighCard {
 		def playerCard = deck.draw()
 		def dealerCard = deck.draw()
 		
-		def result = new Result()
+		def result = [:]
 		result.playerCard = playerCard
 		result.dealerCard = dealerCard
 		
@@ -73,10 +73,4 @@ class HighCard {
 			println();
 		}
 	}
-}
-
-class Result {
-	def playerCard
-	def dealerCard
-	def message
 }
