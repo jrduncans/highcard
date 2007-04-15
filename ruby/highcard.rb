@@ -1,4 +1,4 @@
-#!/bin/env ruby
+#!/usr/bin/env ruby
 
 # Copyright 2006 Stephen Duncan Jr
 #
