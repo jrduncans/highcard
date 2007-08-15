@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+$LOAD_PATH.unshift File.dirname(__FILE__)
+
 require 'cards'
 
 Result = Struct.new('Result', :playerCard, :dealerCard, :message)
