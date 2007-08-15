@@ -21,16 +21,16 @@ class HighCard
 	def HighCard.play
 		deck = Cards::Deck.new
 
-		playerCard = deck.draw
-		dealerCard = deck.draw
+		player_card = deck.draw
+		dealer_card = deck.draw
 
 		result = Result.new
-		result.playerCard = playerCard
-		result.dealerCard = dealerCard
+		result.playerCard = player_card
+		result.dealerCard = dealer_card
 
-		if playerCard < dealerCard
+		if player_card < dealer_card
 			result.message = "Sorry, you lose."
-		elsif playerCard > dealerCard
+		elsif player_card > dealer_card
 			result.message = "You win!"
 		else
 			result.message = "It's a tie."
@@ -40,7 +40,7 @@ class HighCard
 	end
 end
 
-def printInstructions
+def print_instructions
 	puts '1: Play'
 	puts '2: Quit'
 	puts 'Enter the number of the option:'
@@ -50,7 +50,7 @@ if $PROGRAM_NAME == __FILE__
 	$stdout.sync = true
 
 	loop do
-		printInstructions
+		print_instructions
 		
 		line = gets.strip
 		
