@@ -1,8 +1,10 @@
 require 'cards'
 
-describe 'An Ace of Clubs' do
+include Cards
+
+describe Card, '(Ace of Clubs)' do
   before(:each) do
-    @card = Cards::Card.new('Ace', 'Clubs')
+    @card = Card.new('Ace', 'Clubs')
   end
 
   it "should include 'ace' and 'clubs' in display" do
@@ -10,41 +12,41 @@ describe 'An Ace of Clubs' do
   end
 
   it 'should equal another Ace of Clubs' do
-    @card.should eql(Cards::Card.new('Ace', 'Clubs'))
+    @card.should eql(Card.new('Ace', 'Clubs'))
   end
 
   it 'should not equal an Ace of Spades' do
-    @card.should_not eql(Cards::Card.new('Ace', 'Spades'))
+    @card.should_not eql(Card.new('Ace', 'Spades'))
   end
 
   it 'should not equal a Two of Clubs' do
-    @card.should_not eql(Cards::Card.new(2, 'Clubs'))
+    @card.should_not eql(Card.new(2, 'Clubs'))
   end
 
   it 'should be less than a Two of Clubs' do
-    @card.should satisfy {|card| card < Cards::Card.new(2, 'Clubs')}
+    @card.should satisfy {|card| card < Card.new(2, 'Clubs')}
   end
 
   it 'should compare equally to an Ace of Spades' do
-    (@card <=> Cards::Card.new('Ace', 'Spades')).should equal(0)
+    (@card <=> Card.new('Ace', 'Spades')).should equal(0)
   end
 end
 
-describe 'A 3 of Diamonds' do
+describe Card, '(3 of Diamonds)' do
   before(:each) do
-    @card = Cards::Card.new(3, 'Diamonds')
+    @card = Card.new(3, 'Diamonds')
   end
 
   it 'should be greater than the Two of Clubs' do
-    @card.should satisfy {|card| card > Cards::Card.new(2, 'Clubs')}
+    @card.should satisfy {|card| card > Card.new(2, 'Clubs')}
   end
 end
 
 require 'set'
 
-describe 'A new Deck' do
+describe Deck, '(new)' do
   before(:each) do
-    @deck = Cards::Deck.new
+    @deck = Deck.new
   end
 
   it 'should have 52 unique cards' do
@@ -58,9 +60,9 @@ describe 'A new Deck' do
   end
 end
 
-describe 'An empty Deck' do
+describe Deck, '(empty)' do
   before(:each) do
-    @deck = Cards::Deck.new
+    @deck = Deck.new
 
     52.times { @deck.draw }
   end
